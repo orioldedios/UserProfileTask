@@ -1,17 +1,13 @@
 package com.elloiro.userprofile;
 
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -29,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView about;
     private ImageView background;
     private ImageView profileImage;
-    private RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gson = new Gson();
-        queue = Volley.newRequestQueue(this);
 
         try {
             InputStream stream = getAssets().open("Me.json");
@@ -65,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         followers.setText(profile.getFollowers());
         about.setText(profile.getAbout());
 
-        Glide.with(this).load("file:///android_asset/Uri.jpg").into(profileImage);
+        //Glide.with(this).load("file:///android_asset/Uri.jpg").into(profileImage);
+        Glide.with(this).load("file:///android_asset/Uri.jpg").apply(RequestOptions.circleCropTransform()).into(profileImage);
         Glide.with(this).load("file:///android_asset/UserProfile-background.jpg").into(background);
 
     }
