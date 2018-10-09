@@ -57,23 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         updateProfile();
 
-
-
-//        StringRequest req = new StringRequest(Request.Method.GET,"http://www.omdbapi.com/?i=tt3896198&apikey=62e78dc5",new Response.Listener<String>(){
-//                    @Override
-//                    public void onResponse(String response) {
-//                        movie = gson.fromJson(response, Movie.class);
-//                        Glide.with(MovieActivity.this).load(movie.getPoster()).into(posterview);
-//                        updateProfile();
-//                    }
-//                }, new Response.ErrorListener(){
-//            @Override
-//            public void onErrorResponse(VolleyError error){
-//                Toast.makeText(MovieActivity.this,"Error de xarxa",Toast.LENGTH_LONG).show(); }
-//        });
-//
-//
-//        queue.add(req);
     }
     private void updateProfile() {
         name.setText(profile.getName() + profile.getLastname());
@@ -82,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         followers.setText(profile.getFollowers());
         about.setText(profile.getAbout());
 
-        Glide.with(this).load("file:///android_asset/Uri.png").into(profileImage);
+        Glide.with(this).load("file:///android_asset/Uri.jpg").into(profileImage);
         Glide.with(this).load("file:///android_asset/UserProfile-background.jpg").into(background);
 
     }
